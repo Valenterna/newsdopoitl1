@@ -2,8 +2,7 @@
 #define FILE_READER_H
 
 #include "bank.h"
-#include "string"
 
-void read(char* file_name, bank* array[], int& size);
+void read(const char* file_name, bank* array[], int& size);
 
 #endif

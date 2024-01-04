@@ -17,7 +17,7 @@ date convert(char* str)
     return result;
 }
 
-void read(char* file_name, bank* array[], int& size)
+void read(const char* file_name, bank* array[], int& size)
 {
     std::ifstream file(file_name);
     if (file.is_open())
