@@ -4,18 +4,7 @@
 #include <fstream>
 #include <cstring>
 #include <string>
-date convert(char* str)
-{
-    date result;
-    char* context = NULL;
-    char* str_number = strtok_s(str, ".", &context);
-    result.day = atoi(str_number);
-    str_number = strtok_s(NULL, ".", &context);
-    result.month = atoi(str_number);
-    str_number = strtok_s(NULL, ".", &context);
-    result.year = atoi(str_number);
-    return result;
-}
+
 
 void read(const char* file_name, bank* array[], int& size)
 {
@@ -32,9 +21,6 @@ void read(const char* file_name, bank* array[], int& size)
             file >> item->sale;
             file >> item->address;
             file >> tmp_buffer;
-            item->start = convert(tmp_buffer);
-            file >> tmp_buffer;
-            item->finish = convert(tmp_buffer);
             file.read(tmp_buffer, 1); // чтения лишнего символа пробела
             file.getline(item->title, MAX_STRING_SIZE);
             array[size++] = item;

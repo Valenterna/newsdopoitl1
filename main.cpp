@@ -14,6 +14,18 @@ using namespace std;
 #include "bank.h"
 #include "file_reader.h"
 #include "constants.h"
+#include "filter.h"
+
+
+void output(bank* bank)
+{
+    cout << bank->name << '\n';
+    cout << bank->address << '\n';
+    cout << bank->sale << '\n';
+    cout << bank->purchase << '\n';
+    cout << bank->title << '\n';
+    cout << '\n';
+}
 
 int main()
 {
@@ -29,19 +41,35 @@ int main()
         read("data.txt", bank, size);
         for (int i = 0; i < size; i++)
         {
-            cout << bank[i]->name << '\n';
-            cout << bank[i]->address << '\n';
-            cout << bank[i]->sale << '\n';
-            cout << bank[i]->purchase << '\n';
-            cout << bank[i]->finish.day << ' ';
-            cout << bank[i]->finish.month << ' ';
-            cout << bank[i]->finish.year << '\n';
-            cout << bank[i]->start.day << ' ';
-            cout << bank[i]->start.month << ' ';
-            cout << bank[i]->start.year << '\n';
-            cout << bank[i]->title << '\n';
-            cout << '\n';
+            //output(bank[i]);
         }
+		bool (*check_function)(bank*) = NULL;
+		int item;
+		cin >> item;
+		cout << '\n';
+		switch (item)
+		{
+		case 1:
+			check_function = check_bank_sale; //       
+			break;
+		case 2:
+			check_function = check_belarus_bank_prices; //       
+			break;
+		default:
+			throw "  ";
+		}
+		if (check_function)
+		{
+			int new_size;
+			bank** filtered = filter(bank, size, check_function, new_size);
+			for (int i = 0; i < new_size; i++)
+			{
+				output(filtered[i]);
+			}
+			delete[] filtered;
+		}
+
+
         for (int i = 0; i < size; i++)
         {
             delete bank[i];
@@ -51,5 +79,6 @@ int main()
     {
         cout << error << '\n';
     }
+
     return 0;
 }
