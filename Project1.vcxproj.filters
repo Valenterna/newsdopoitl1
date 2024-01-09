@@ -24,12 +24,18 @@
     <ClCompile Include="filter.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="process.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="file_reader.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="filter.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="processing.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
