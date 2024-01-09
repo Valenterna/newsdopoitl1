@@ -1,7 +1,7 @@
 #include "processing.h"
 
-int process(bank* array[], int size)
+int process(bank* bank)
 {
     
-    return 0;
+    return bank->purchase - bank->sale;
 }

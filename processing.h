@@ -4,6 +4,6 @@
 
 #include "bank.h"
 
-int process(bank* array[], int size);
+int process(bank* bank);
 
 #endif
